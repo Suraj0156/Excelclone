@@ -1,0 +1,15 @@
+body{
+    width: 100vw;
+
+}
+table{
+    border-collapse: collapse;
+    width: auto;
+    overflow-x: auto;
+}
+th,td{
+    border: 1px solid black;
+     min-width:100px;
+     max-width: 100px;
+
+}
