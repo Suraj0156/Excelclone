@@ -1,3 +1,5 @@
+//const { get } = require("cheerio/lib/api/traversing");
+
 const theadRow = document.getElementById("table-heading-row");
 const tbody = document.getElementById("table-body");
 const boltbutton = document.getElementById("bold-button");
@@ -11,6 +13,9 @@ const fontfamily=document.getElementById("fontfamily");
 const cut =document.getElementById("cut");
 const copy=document.getElementById("copy");
 const paste=document.getElementById("paste");
+const tc=document.getElementById("textcolor");
+const bc=document.getElementById("bgcolor");
+
 
 
 let currentCell;
@@ -57,6 +62,15 @@ underline.addEventListener("click", () => {
         currentCell.style.textDecoration = "underline";
     }
 });
+
+// text color
+tc.addEventListener("change",()=>{
+    currentCell.style.color=tc.value;
+})
+//background color
+bc.addEventListener("change",()=>{
+    currentCell.style.backgroundColor=bc.value;
+})
 //align
 la.addEventListener("click",()=>{
         currentCell.style.textAlign = "left"
