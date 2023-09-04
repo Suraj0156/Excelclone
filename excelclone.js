@@ -20,6 +20,10 @@ const bc=document.getElementById("bgcolor");
 
 let currentCell;
 let cutValue = {};
+// sheet no
+
+
+
 
 for (let col = 65; col <= 90; col++) {
     let th = document.createElement("th");
@@ -41,6 +45,37 @@ for (let row = 1; row <= 100; row++) {
     }
     tbody.appendChild(tr);
     
+}
+//uplod function
+document.getElementById("json").addEventListener("change",readJsonFile);
+function readJsonFile(event){
+    const file=event.target.file[0];
+    if(file){
+        //READING FILE
+        const reader = new FileReader();
+        reader.onload=function(e){
+            const fileContent=e.target.result;
+            try{
+                
+                const jsonData=new JSON.parse(fileContent);
+                matrx=jsonData;
+                jsonData.forEach((row)=>{
+                    row.forEach((cell)=>{
+                        if(cell.id){
+                            var myCell=document.getElementById(cell.id);
+                            myCell.innerText=cell.text;
+                            myCell.style.cssText=cell.cell.style;
+                        }
+                    })
+                })
+
+            }catch(err){
+                console.log("Error in reding Json file",err);
+
+            }
+        }
+        reader.readAsText(file);
+    }
 }
 //BLD BUTTON
 boltbutton.addEventListener("click",()=>{
